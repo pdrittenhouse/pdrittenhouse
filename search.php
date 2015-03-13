@@ -9,49 +9,67 @@
 
 get_header(); ?>
 
-	<section class="page-content primary" role="main"><?php
 
-		if ( have_posts() ) : ?>
+    <div class="container">
 
-			<div class="search-title">
-				<h1 ><?php printf( __( 'Search Results for: %s', 'pdrittenhouse' ), get_search_query() ); ?></h1>
+        <?php
 
-				<div class="second-search">
-					<p>
-						<?php _e( 'Not what you searched for? Try again with some different keywords.', 'pdrittenhouse' ); ?>
-					</p>
+            if ( have_posts() ) : ?>
 
-					<?php get_search_form(); ?>
-				</div>
-			</div><?php
+                <h1 ><?php printf( __( 'Search Results for: %s', 'pdrittenhouse' ), get_search_query() ); ?></h1>
 
-			while ( have_posts() ) : the_post();
+                <div class="second-search">
+                    <p>
+                        <?php _e( 'Not what you searched for? Try again with some different keywords.', 'pdrittenhouse' ); ?>
+                    </p>
 
-				get_template_part( 'loop', get_post_format() );
+                    <?php get_search_form(); ?>
+                </div>
 
-				wp_link_pages(
-					array(
-						'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'pdrittenhouse' ), get_the_title() ) . '<br />',
-						'after'            => '</p></div>',
-						'next_or_number'   => 'number',
-						'separator'        => ' ',
-						'pagelink'         => __( '&raquo; Part %', 'pdrittenhouse' ),
-					)
-				);
+                <?php
 
-			endwhile;
+                while ( have_posts() ) : the_post();
 
-		else :
+                    get_template_part( 'loop', get_post_format() );
 
-			get_template_part( 'loop', 'empty' );
+                    wp_link_pages(
+                        array(
+                            'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'pdrittenhouse' ), get_the_title() ) . '<br />',
+                            'after'            => '</p></div>',
+                            'next_or_number'   => 'number',
+                            'separator'        => ' ',
+                            'pagelink'         => __( '&raquo; Part %', 'pdrittenhouse' ),
+                        )
+                    );
 
-		endif; ?>
+                endwhile;
 
-		<div class="pagination">
+            else :
 
-			<?php get_template_part( 'template-part', 'pagination' ); ?>
+                get_template_part( 'loop', 'empty' );
 
-		</div>
-	</section>
+            endif; ?>
+
+            <div class="pagination">
+
+                <?php get_template_part( 'template-part', 'pagination' ); ?>
+
+            </div>
+
+
+        <div class="ribbon-wrapper">
+            <div class="ribbon-front">
+                <!-- ribbon text goes here -->
+            </div>
+            <div class="ribbon-edge-topleft"></div>
+            <div class="ribbon-edge-topright"></div>
+            <div class="ribbon-edge-bottomleft"></div>
+            <div class="ribbon-edge-bottomright"></div>
+            <div class="ribbon-back-left"></div>
+            <div class="ribbon-back-right"></div>
+        </div>
+
+
+    </div>
 
 <?php get_footer(); ?>

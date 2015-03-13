@@ -9,35 +9,49 @@
 
 get_header(); ?>
 
-	<section class="page-content primary" role="main">
 
-		<?php
-			if ( have_posts() ) : the_post();
+    <div class="container">
 
-				get_template_part( 'loop', get_post_format() ); ?>
+        <?php
+        if ( have_posts() ) : the_post();
 
-				<aside class="post-aside">
+            get_template_part( 'loop', get_post_format() ); ?>
 
-					<div class="post-links">
-						<?php previous_post_link( '%link', __( '&laquo; Previous post', 'pdrittenhouse' ) ) ?>
-						<?php next_post_link( '%link', __( 'Next post &raquo;', 'pdrittenhouse' ) ); ?>
-					</div>
 
-					<?php
-						if ( comments_open() || get_comments_number() > 0 ) :
-							comments_template( '', true );
-						endif;
-					?>
 
-				</aside><?php
+            <!-- post-links -->
+                <?php previous_post_link( '%link', __( '&laquo; Previous post', 'pdrittenhouse' ) ) ?>
+                <?php next_post_link( '%link', __( 'Next post &raquo;', 'pdrittenhouse' ) ); ?>
 
-			else :
 
-				get_template_part( 'loop', 'empty' );
+            <?php
+            if ( comments_open() || get_comments_number() > 0 ) :
+                comments_template( '', true );
+            endif;
+            ?>
 
-			endif;
-		?>
+            <?php
 
-	</section>
+        else :
+
+            get_template_part( 'loop', 'empty' );
+
+        endif;
+        ?>
+
+        <div class="ribbon-wrapper">
+            <div class="ribbon-front">
+                <!-- ribbon text goes here -->
+            </div>
+            <div class="ribbon-edge-topleft"></div>
+            <div class="ribbon-edge-topright"></div>
+            <div class="ribbon-edge-bottomleft"></div>
+            <div class="ribbon-edge-bottomright"></div>
+            <div class="ribbon-back-left"></div>
+            <div class="ribbon-back-right"></div>
+        </div>
+
+
+    </div>
 
 <?php get_footer(); ?>

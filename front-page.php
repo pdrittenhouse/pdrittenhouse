@@ -9,33 +9,124 @@
 
 get_header(); ?>
 
-	<div class="home-widgets"><?php
-		if ( function_exists( 'dynamic_sidebar' ) ) :
-			dynamic_sidebar( 'home-sidebar' );
-		endif; ?>
-	</div>
+    <section class="parallax group1">
 
-	<section class="page-content primary" role="main">
-		<?php
-			if ( have_posts() ) :
+        <div class="wrapper">
 
-				while ( have_posts() ) : the_post();
+            <article>
+                <?php
+                if ( have_posts() ) :
 
-					get_template_part( 'loop', get_post_format() );
+                    while ( have_posts() ) : the_post();
 
-				endwhile;
+                        get_template_part( 'loop', get_post_format() );
 
-			else :
+                    endwhile;
 
-				get_template_part( 'loop', 'empty' );
+                else :
 
-			endif;
-		?>
-		<div class="pagination">
+                    get_template_part( 'loop', 'empty' );
 
-			<?php get_template_part( 'template-part', 'pagination' ); ?>
+                endif;
+                ?>
+                <div class="pagination">
+                    <?php get_template_part( 'template-part', 'pagination' ); ?>
+                </div>
+                <div class="home-widgets"><?php
+                    if ( function_exists( 'dynamic_sidebar' ) ) :
+                        dynamic_sidebar( 'home-sidebar' );
+                    endif; ?>
+                </div>
+            </article>
 
-		</div>
-	</section>
+        </div>
+    </section>
+
+    <section class="parallax group2">
+        <div class="wrapper">
+            <article>
+                Quote goes here.
+            </article>
+        </div>
+    </section>
+
+
+
+    <section class="parallax group3">
+        <div class="wrapper">
+
+            <div class="ribbon-wrapper">
+                <div class="ribbon-front">
+                    About Me
+                </div>
+                <div class="ribbon-edge-topleft"></div>
+                <div class="ribbon-edge-topright"></div>
+                <div class="ribbon-edge-bottomleft"></div>
+                <div class="ribbon-edge-bottomright"></div>
+                <div class="ribbon-back-left"></div>
+                <div class="ribbon-back-right"></div>
+            </div>
+
+            <article>
+                <p>Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends. </p>
+
+                <p>Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends. </p>
+            </article>
+
+        </div>
+    </section>
+
+
+
+    <section class="parallax group4">
+        <div class="wrapper">
+
+            <div class="ribbon-wrapper">
+                <div class="ribbon-front">
+                    My Portfolio
+                </div>
+                <div class="ribbon-edge-topleft"></div>
+                <div class="ribbon-edge-topright"></div>
+                <div class="ribbon-edge-bottomleft"></div>
+                <div class="ribbon-edge-bottomright"></div>
+                <div class="ribbon-back-left"></div>
+                <div class="ribbon-back-right"></div>
+            </div>
+
+            <article>
+                <p>Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends. </p>
+
+                <p>Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends. </p>
+            </article>
+
+        </div>
+    </section>
+
+
+
+    <section class="parallax group5">
+        <div class="wrapper">
+
+            <div class="ribbon-wrapper">
+                <div class="ribbon-front">
+                    Contact Me
+                </div>
+                <div class="ribbon-edge-topleft"></div>
+                <div class="ribbon-edge-topright"></div>
+                <div class="ribbon-edge-bottomleft"></div>
+                <div class="ribbon-edge-bottomright"></div>
+                <div class="ribbon-back-left"></div>
+                <div class="ribbon-back-right"></div>
+            </div>
+
+            <article>
+                <p>Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends. </p>
+
+                <p>Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends. </p>
+            </article>
+
+
+        </div>
+    </section>
 
 <?php get_footer(); ?>

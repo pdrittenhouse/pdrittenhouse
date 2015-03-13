@@ -9,78 +9,95 @@
 
 get_header(); ?>
 
-	<section class="page-content primary" role="main"><?php
 
-		if ( have_posts() ) : ?>
+    <div class="container">
 
-			<h1 class="archive-title">
-				<?php
-					if ( is_category() ):
-						printf( __( 'Category Archives: %s', 'pdrittenhouse' ), single_cat_title( '', false ) );
+        <?php
 
-					elseif ( is_tag() ):
-						printf( __( 'Tag Archives: %s', 'pdrittenhouse' ), single_tag_title( '', false ) );
+            if ( have_posts() ) : ?>
 
-					elseif ( is_tax() ):
-						$term     = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-						$taxonomy = get_taxonomy( get_query_var( 'taxonomy' ) );
-						printf( __( '%s Archives: %s', 'pdrittenhouse' ), $taxonomy->labels->singular_name, $term->name );
+                <h1 class="archive-title">
+                <?php
+                if ( is_category() ):
+                    printf( __( 'Category Archives: %s', 'pdrittenhouse' ), single_cat_title( '', false ) );
 
-					elseif ( is_day() ) :
-						printf( __( 'Daily Archives: %s', 'pdrittenhouse' ), get_the_date() );
+                elseif ( is_tag() ):
+                    printf( __( 'Tag Archives: %s', 'pdrittenhouse' ), single_tag_title( '', false ) );
 
-					elseif ( is_month() ) :
-						printf( __( 'Monthly Archives: %s', 'pdrittenhouse' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'pdrittenhouse' ) ) );
+                elseif ( is_tax() ):
+                    $term     = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+                    $taxonomy = get_taxonomy( get_query_var( 'taxonomy' ) );
+                    printf( __( '%s Archives: %s', 'pdrittenhouse' ), $taxonomy->labels->singular_name, $term->name );
 
-					elseif ( is_year() ) :
-						printf( __( 'Yearly Archives: %s', 'pdrittenhouse' ), get_the_date( _x( 'Y', 'yearly archives date format', 'pdrittenhouse' ) ) );
+                elseif ( is_day() ) :
+                    printf( __( 'Daily Archives: %s', 'pdrittenhouse' ), get_the_date() );
 
-					elseif ( is_author() ) : the_post();
-						printf( __( 'All posts by %s', 'pdrittenhouse' ), get_the_author() );
+                elseif ( is_month() ) :
+                    printf( __( 'Monthly Archives: %s', 'pdrittenhouse' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'pdrittenhouse' ) ) );
 
-					else :
-						_e( 'Archives', 'pdrittenhouse' );
+                elseif ( is_year() ) :
+                    printf( __( 'Yearly Archives: %s', 'pdrittenhouse' ), get_the_date( _x( 'Y', 'yearly archives date format', 'pdrittenhouse' ) ) );
 
-					endif;
-				?>
-			</h1><?php
+                elseif ( is_author() ) : the_post();
+                    printf( __( 'All posts by %s', 'pdrittenhouse' ), get_the_author() );
 
-			if ( is_category() || is_tag() || is_tax() ):
-				$term_description = term_description();
-				if ( ! empty( $term_description ) ) : ?>
+                else :
+                    _e( 'Archives', 'pdrittenhouse' );
 
-					<div class="archive-description"><?php
-						echo $term_description; ?>
-					</div><?php
+                endif;
+                ?>
+                </h1><?php
 
-				endif;
-			endif;
+                if ( is_category() || is_tag() || is_tax() ):
+                    $term_description = term_description();
+                    if ( ! empty( $term_description ) ) : ?>
 
-			if ( is_author() && get_the_author_meta( 'description' ) ) : ?>
+                        <div class="archive-description"><?php
+                        echo $term_description; ?>
+                        </div><?php
 
-				<div class="archive-description">
-					<?php the_author_meta( 'description' ); ?>
-				</div><?php
+                    endif;
+                endif;
 
-			endif;
+                if ( is_author() && get_the_author_meta( 'description' ) ) : ?>
 
-			while ( have_posts() ) : the_post();
+                    <div class="archive-description">
+                    <?php the_author_meta( 'description' ); ?>
+                    </div><?php
 
-				get_template_part( 'loop', get_post_format() );
+                endif;
 
-			endwhile;
+                while ( have_posts() ) : the_post();
 
-		else :
+                    get_template_part( 'loop', get_post_format() );
 
-			get_template_part( 'loop', 'empty' );
+                endwhile;
 
-		endif; ?>
+            else :
 
-		<div class="pagination">
+                get_template_part( 'loop', 'empty' );
 
-			<?php get_template_part( 'template-part', 'pagination' ); ?>
+            endif; ?>
 
-		</div>
-	</section>
+            <div class="pagination">
+
+                <?php get_template_part( 'template-part', 'pagination' ); ?>
+
+            </div>
+
+        <div class="ribbon-wrapper">
+            <div class="ribbon-front">
+                <!-- ribbon text goes here -->
+            </div>
+            <div class="ribbon-edge-topleft"></div>
+            <div class="ribbon-edge-topright"></div>
+            <div class="ribbon-edge-bottomleft"></div>
+            <div class="ribbon-edge-bottomright"></div>
+            <div class="ribbon-back-left"></div>
+            <div class="ribbon-back-right"></div>
+        </div>
+
+
+    </div>
 
 <?php get_footer(); ?>

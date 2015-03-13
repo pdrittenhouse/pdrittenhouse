@@ -9,37 +9,51 @@
 
 get_header(); ?>
 
-	<section class="page-content primary" role="main">
-		<?php
-			if ( have_posts() ):
 
-				while ( have_posts() ) : the_post();
+    <div class="container">
 
-					get_template_part( 'loop', get_post_format() );
+        <?php
+        if ( have_posts() ):
 
-					wp_link_pages(
-						array(
-							'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'pdrittenhouse' ), get_the_title() ) . '<br />',
-							'after'            => '</p></div>',
-							'next_or_number'   => 'number',
-							'separator'        => ' ',
-							'pagelink'         => __( '&raquo; Part %', 'pdrittenhouse' ),
-						)
-					);
+            while ( have_posts() ) : the_post();
 
-				endwhile;
+                get_template_part( 'loop', get_post_format() );
 
-			else :
+                wp_link_pages(
+                    array(
+                        'before'           => '<div class="linked-page-nav"><p>' . sprintf( __( '<em>%s</em> is separated in multiple parts:', 'pdrittenhouse' ), get_the_title() ) . '<br />',
+                        'after'            => '</p></div>',
+                        'next_or_number'   => 'number',
+                        'separator'        => ' ',
+                        'pagelink'         => __( '&raquo; Part %', 'pdrittenhouse' ),
+                    )
+                );
 
-				get_template_part( 'loop', 'empty' );
+            endwhile;
 
-			endif;
-		?>
-		<div class="pagination">
+        else :
 
-			<?php get_template_part( 'template-part', 'pagination' ); ?>
+            get_template_part( 'loop', 'empty' );
 
-		</div>
-	</section>
+        endif;
+        ?>
+        <div class="pagination">
+            <?php get_template_part( 'template-part', 'pagination' ); ?>
+        </div>
+
+        <div class="ribbon-wrapper">
+            <div class="ribbon-front">
+                <!-- ribbon text goes here -->
+            </div>
+            <div class="ribbon-edge-topleft"></div>
+            <div class="ribbon-edge-topright"></div>
+            <div class="ribbon-edge-bottomleft"></div>
+            <div class="ribbon-edge-bottomright"></div>
+            <div class="ribbon-back-left"></div>
+            <div class="ribbon-back-right"></div>
+        </div>
+
+
+    </div>
 
 <?php get_footer(); ?>

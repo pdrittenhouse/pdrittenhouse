@@ -1,0 +1,54 @@
+.parallax {
+  height:100%;
+  overflow: hidden;
+}
+.group1 {
+  background: url('images/skyline.jpg') scroll 0 100px;
+  background-size: cover;
+  margin-top: -100px;
+  padding-top: 100px;
+  height: calc(100% - 100px);
+}
+.group2 {
+  background: url('images/jeffersonmem.jpg') fixed;
+  background-size: cover;
+  height:300px;
+}
+.group3 {
+  background: url('images/metro.jpg') scroll;
+  background-size: cover;
+}
+.group4 {
+  background: url('images/rowhouses.jpg') fixed;
+  background-size: cover;
+}
+.group5 {
+  background: url('images/street.jpg') fixed;
+  background-size: cover;
+}
+.wrapper {
+  display:block;
+  height: 100%;
+  margin: -50px auto 0 auto;
+//  background: url('images/stacked_circles.png') rgba(255,255,255,.8);
+  box-shadow: 0 0 20px;
+  padding-top:50px;
+}
+.group1, .group2 {
+  .wrapper {
+    background: none;
+    box-shadow: none;
+  }
+}
+.group2 > .wrapper {
+  background: none;
+  box-shadow: none;
+  margin: 0;
+  width:100%;
+  background: url('images/dots-large.png');
+
+  article {
+    margin: 0 auto;
+  }
+
+}

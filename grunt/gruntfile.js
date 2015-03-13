@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
 		pkg: grunt.file.readJSON('package.json'),
 
-		// chech our JS
+		// check our JS
 		jshint: {
 			options: {
 				"bitwise": true,
@@ -39,10 +39,29 @@ module.exports = function(grunt) {
 				files: {
 					'../js/scripts.min.js': [
 						'../js/scripts.js'
-					]
+					],
+                    '../js/vendor/modernizr.min.js': [
+                        'bower_components/modernizr/modernizr.js'
+                    ],
+                    '../js/vendor/retina.min.js': [
+                        'bower_components/retina.js/src/retina.js'
+                    ]
 				}
 			}
 		},
+
+        // minify css
+        cssmin: {
+            options: {
+                shorthandCompacting: false,
+                roundingPrecision: -1
+            },
+            target: {
+                files: {
+                    '../css/vendor/pure-min.css': ['bower_components/purecss/build/pure.css']
+                }
+            }
+        },
 
 		// compile your sass
 		sass: {
@@ -133,9 +152,22 @@ module.exports = function(grunt) {
 		},
 
 		copyto: {
+            prod: {
+                files: [
+                    {cwd: 'bower_components/retina.js/src/', src: ['**/*.scss'], dest: '../scss/vendor/'},
+                ],
+                options: {
+                    ignore: [
+                        '../dist{,/**/*}',
+                        '../doc{,/**/*}',
+                        '../grunt{,/**/*}',
+                        '../scss{,/**/*}'
+                    ]
+                }
+            },
 			dist: {
 				files: [
-					{cwd: '../', src: ['**/*'], dest: '../dist/'}
+					{cwd: '../', src: ['**/*'], dest: '../dist/'},
 				],
 				options: {
 					ignore: [
@@ -152,10 +184,14 @@ module.exports = function(grunt) {
 	// Load NPM's via matchdep
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+
 	// Development task
 	grunt.registerTask('default', [
 		'jshint',
 		'uglify',
+        'cssmin',
+        'copyto:prod',
 		'sass:dev',
 		'sass:editorstyles'
 	]);
